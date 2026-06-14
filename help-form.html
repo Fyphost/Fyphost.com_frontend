@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Form | Fyphost</title>
+  <meta name="description" content="Need a custom solution or want to report abuse? Fill in the Fyphost help form and our specialists will assist you.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Support</span>
+      <h1>Custom help form</h1>
+      <p class="lead" style="margin:0 auto">Tell us what you need — technical help, a custom solution or to report abuse — and our team will get on it.</p>
+      <div class="breadcrumb"><a href="index.html">Home</a> / Help form</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="form-card">
+        <div class="form-success">Thanks! Your request has been submitted. Our team will reach out shortly.</div>
+        <form data-validate novalidate>
+          <div class="field">
+            <label for="h-name">Full name</label>
+            <input type="text" id="h-name" name="name" placeholder="Your name" required>
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field">
+            <label for="h-email">Email</label>
+            <input type="email" id="h-email" name="email" placeholder="you@example.com" required>
+            <span class="err">Please enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="h-topic">How can we help?</label>
+            <select id="h-topic" name="topic" required>
+              <option value="">Select a topic…</option>
+              <option>Technical support</option>
+              <option>Billing &amp; payments</option>
+              <option>Website migration</option>
+              <option>Custom solution</option>
+              <option>Report abuse</option>
+              <option>Other</option>
+            </select>
+            <span class="err">Please choose a topic.</span>
+          </div>
+          <div class="field">
+            <label for="h-message">Details</label>
+            <textarea id="h-message" name="message" placeholder="Describe your request in detail…" required></textarea>
+            <span class="err">Please add some details.</span>
+          </div>
+          <button class="btn btn-primary btn-block btn-lg" type="submit">Submit request</button>
+          <p class="form-note">For urgent issues, message us on <a href="https://wa.me/919734706347" style="color:var(--purple)">WhatsApp</a> or email <a href="mailto:support@fyphost.com" style="color:var(--purple)">support@fyphost.com</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
