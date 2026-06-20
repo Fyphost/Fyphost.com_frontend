@@ -210,3 +210,113 @@
     init();
   }
 })();
+
+
+/* =========================================================
+   v2 interactive modules — counters, tabs, testimonials, KB
+   ========================================================= */
+(function () {
+  "use strict";
+
+  /* ---------- Animated stat counters ---------- */
+  function initCounters() {
+    var nodes = document.querySelectorAll("[data-count]");
+    if (!nodes.length) return;
+    function run(el) {
+      var target = parseFloat(el.getAttribute("data-count"));
+      var dec = (el.getAttribute("data-decimals") || "0") | 0;
+      var prefix = el.getAttribute("data-prefix") || "";
+      var suffix = el.getAttribute("data-suffix") || "";
+      var dur = 1600, start = performance.now();
+      function frame(now) {
+        var p = Math.min(1, (now - start) / dur);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = (target * eased).toFixed(dec);
+        el.textContent = prefix + Number(val).toLocaleString("en-IN") + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+        else el.textContent = prefix + target.toLocaleString("en-IN", { minimumFractionDigits: dec }) + suffix;
+      }
+      requestAnimationFrame(frame);
+    }
+    if (!("IntersectionObserver" in window)) { nodes.forEach(run); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.4 });
+    nodes.forEach(function (n) { io.observe(n); });
+  }
+
+  /* ---------- Tabs ---------- */
+  function initTabs() {
+    document.querySelectorAll("[data-tabs]").forEach(function (group) {
+      var btns = group.querySelectorAll(".tabs button");
+      var panels = group.querySelectorAll(".tab-panel");
+      btns.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var name = btn.getAttribute("data-tab");
+          btns.forEach(function (b) { b.classList.toggle("active", b === btn); });
+          panels.forEach(function (p) { p.classList.toggle("active", p.getAttribute("data-panel") === name); });
+        });
+      });
+    });
+  }
+
+  /* ---------- Testimonials slider ---------- */
+  function initTestimonials() {
+    document.querySelectorAll("[data-testi]").forEach(function (root) {
+      var rail = root.querySelector(".testi-rail");
+      var slides = root.querySelectorAll(".testi-slide");
+      var prev = root.querySelector("[data-testi-prev]");
+      var next = root.querySelector("[data-testi-next]");
+      var dotsWrap = root.querySelector(".testi-dots");
+      if (!rail || !slides.length) return;
+      var i = 0, timer;
+      if (dotsWrap) {
+        slides.forEach(function (_, idx) {
+          var d = document.createElement("i");
+          if (idx === 0) d.className = "active";
+          d.addEventListener("click", function () { go(idx); });
+          dotsWrap.appendChild(d);
+        });
+      }
+      function go(n) {
+        i = (n + slides.length) % slides.length;
+        rail.style.transform = "translateX(-" + i * 100 + "%)";
+        if (dotsWrap) dotsWrap.querySelectorAll("i").forEach(function (d, idx) { d.classList.toggle("active", idx === i); });
+      }
+      if (prev) prev.addEventListener("click", function () { go(i - 1); reset(); });
+      if (next) next.addEventListener("click", function () { go(i + 1); reset(); });
+      function auto() { timer = setInterval(function () { go(i + 1); }, 5500); }
+      function reset() { clearInterval(timer); auto(); }
+      auto();
+      root.addEventListener("mouseenter", function () { clearInterval(timer); });
+      root.addEventListener("mouseleave", auto);
+    });
+  }
+
+  /* ---------- Knowledge base search filter ---------- */
+  function initKbSearch() {
+    var input = document.querySelector("[data-kb-search]");
+    if (!input) return;
+    var links = Array.prototype.slice.call(document.querySelectorAll("[data-kb-item]"));
+    var cats = Array.prototype.slice.call(document.querySelectorAll(".kb-cat"));
+    var noResult = document.querySelector("[data-kb-noresult]");
+    input.addEventListener("input", function () {
+      var q = input.value.trim().toLowerCase();
+      var any = false;
+      links.forEach(function (li) {
+        var match = li.textContent.toLowerCase().indexOf(q) !== -1;
+        li.style.display = match ? "" : "none";
+        if (match) any = true;
+      });
+      cats.forEach(function (cat) {
+        var visible = cat.querySelectorAll("[data-kb-item]:not([style*='none'])").length;
+        cat.style.display = (q === "" || visible) ? "" : "none";
+      });
+      if (noResult) noResult.style.display = (q !== "" && !any) ? "block" : "none";
+    });
+  }
+
+  function init() { initCounters(); initTabs(); initTestimonials(); initKbSearch(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();

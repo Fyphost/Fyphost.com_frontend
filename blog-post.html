@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Speed Up Your Website in 2026 | Fyphost Blog</title>
+  <meta name="description" content="Ten practical, no-nonsense tweaks to cut your website's load time and boost Core Web Vitals — from caching and images to hosting choices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="announce-bar"></div>
+  <div id="header"></div>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Performance · 8 min read</span>
+      <h1>How to speed up your website in 2026</h1>
+      <div class="breadcrumb"><a href="index.html">Home</a> / <a href="blog.html">Blog</a> / Speed up your website</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <div class="media-card" style="aspect-ratio:21/9;margin-bottom:30px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+      <p class="lead" style="color:var(--body)">A fast website keeps visitors happy, ranks better on Google and converts more customers. The good news: most speed problems come down to a handful of fixable issues. Here are the tweaks that make the biggest difference.</p>
+
+      <h2>1. Start with great hosting</h2>
+      <p>Speed begins at the server. NVMe storage, a modern web server like LiteSpeed and HTTP/3 support can shave hundreds of milliseconds off your time-to-first-byte before you optimise a single image. If your host still uses spinning disks or oversells its servers, no amount of front-end tuning will fully compensate.</p>
+
+      <h2>2. Enable caching everywhere</h2>
+      <p>Caching stores ready-made copies of your pages so they don't have to be rebuilt on every visit. Use server-level caching (such as LSCache), a page-cache plugin and browser caching together for the best results.</p>
+
+      <h2>3. Optimise and lazy-load images</h2>
+      <p>Images are usually the heaviest part of a page. Compress them, serve modern formats like WebP or AVIF, and lazy-load anything below the fold so it only downloads when needed.</p>
+
+      <h2>4. Use a content delivery network</h2>
+      <p>A CDN serves your static files from a location physically close to each visitor, dramatically reducing latency for a global audience. Many hosts, including Fyphost, include a CDN for free.</p>
+
+      <h2>5. Minify and combine assets</h2>
+      <p>Minifying CSS and JavaScript removes unnecessary characters, while combining files reduces the number of requests the browser must make. With HTTP/2 and HTTP/3, focus more on minification and deferring non-critical scripts.</p>
+
+      <h2>6. Clean up your database</h2>
+      <p>Over time, databases fill with revisions, transients and orphaned data. Regular cleanups keep queries fast, and an object cache like Redis can speed up dynamic sites significantly.</p>
+
+      <h2>7. Choose a lightweight theme</h2>
+      <p>Bloated themes load code you'll never use. A lean, well-coded theme gives you a faster foundation and fewer headaches down the line.</p>
+
+      <h2>The bottom line</h2>
+      <p>Speed is a feature. Start with solid hosting, layer on caching and a CDN, then trim images and code. Do these consistently and you'll have a site that feels instant — and visitors who stick around.</p>
+
+      <div class="promo" style="margin-top:34px"><div><h3>Want a faster site without the work?</h3><p>Fyphost ships NVMe, LiteSpeed cache and a free CDN on every plan.</p></div><a class="btn btn-light btn-lg" href="web-hosting.html">See hosting plans</a></div>
+
+      <div class="share">
+        <span>Share:</span>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.fyphost.com/blog-post.html" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https://www.fyphost.com/blog-post.html" target="_blank" rel="noopener">X / Twitter</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.fyphost.com/blog-post.html" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg-soft)">
+    <div class="container">
+      <div class="center" style="margin-bottom:30px"><h2>Keep reading</h2></div>
+      <div class="blog-grid">
+        <article class="blog-card reveal"><a href="blog-post.html" class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v6H3zM3 11h18v10H3z"/></svg></a><div class="body"><span class="cat">WordPress</span><h3><a href="blog-post.html">Migrating WordPress without downtime</a></h3><p>Move your WordPress site to a new host safely, step by step.</p><div class="meta"><span>6 min read</span><a href="blog-post.html">Read →</a></div></div></article>
+        <article class="blog-card reveal"><a href="blog-post.html" class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5z"/></svg></a><div class="body"><span class="cat">Security</span><h3><a href="blog-post.html">7 essential website security habits</a></h3><p>Simple, high-impact practices to protect your site and visitors.</p><div class="meta"><span>5 min read</span><a href="blog-post.html">Read →</a></div></div></article>
+        <article class="blog-card reveal"><a href="blog-post.html" class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v12H4zM2 18h20v2H2z"/></svg></a><div class="body"><span class="cat">Tutorials</span><h3><a href="blog-post.html">Choosing the right hosting plan</a></h3><p>Shared, cloud or VPS? How to pick the plan that fits your project.</p><div class="meta"><span>7 min read</span><a href="blog-post.html">Read →</a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer"></div>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
